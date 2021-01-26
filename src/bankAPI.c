@@ -24,7 +24,6 @@ void new_acc()
 {
     Customer *customer= print_and_scan_new_acc_messages();
     struct2file(customer);
-    
 }
 
 

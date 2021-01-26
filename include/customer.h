@@ -1,4 +1,6 @@
-#include <stdio.h>
+#ifndef COSTUMER_H
+#define COSTUMER_H
+
 
 typedef struct
 {
@@ -8,3 +10,5 @@ typedef struct
     char adress[50];
     
 } Customer;
+
+#endif

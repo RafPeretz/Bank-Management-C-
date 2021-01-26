@@ -7,18 +7,13 @@
 
 void exec_option(int option);
 
-
-
-int main ()
+int main()
 {
     menu();
     int option = read_int();
     exec_option(option);
     return 0;
 }
-
-
-
 
 void exec_option(int option)
 {

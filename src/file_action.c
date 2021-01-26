@@ -1,62 +1,45 @@
-#include <stdio.h>
-#include <stdlib.h> 
-#include <string.h>
-#include "../include/ioUtils.h"
-#include "../include/bankAPI.h"
-#include "../include/customer.h"
+#include "../include/file_action.h"
 
+#define ID_LEN 	20
 
-struct2file()
+int struct2file(Customer *person)
 {
-       FILE *outfile; 
-      
-    // open file for writing 
-    outfile = fopen ("testfile.txt", "w"); 
-    if (outfile == NULL) 
-    {
-        fprintf(stderr, "\nError opend file\n"); 
-        exit (1); 
-    }
+	const char* write_format = "%s\n%s\n%d\n%d";
 
-    Customer *customer = (Customer*)malloc(sizeof(Customer));
+	char *path = get_name_file(person->id);
+	FILE *costumer_file = fopen(path, "w+");
 
-    printf("Please enter your name \n");
-    char name_customer[50];
-    read_line(name_customer,50);
-    strcpy(customer->name,name_customer);
-
-
-    printf("Please enter your id \n");
-    int id=read_int();
-    customer->id=id;
-
-    printf("Please enter your money \n");
-    int money=read_int();
-    customer->money=money;
-
-    printf("Please enter your adress \n");
-    char adress_customer[50];
-    read_line(adress_customer,50);
-    strcpy(customer->adress,adress_customer);
-
-    printf("Contents of structure %s "" %d " " %d " " %s \n",customer->name,customer->id,customer->money,customer->adress);
-
-
-
-
-    fwrite(&customer, sizeof(Customer), 1, outfile);
-
-    if(fwrite != 0)  
-        printf("contents to file written successfully !\n"); 
-    else 
-        printf("error writing file !\n"); 
-  
-    // close file 
-    fclose (outfile); 
-   
-
-    printf("Contents of structure %s %d %d %s",customer->name,customer->id,customer->money,customer->adress);
-
-
-
+	if (costumer_file != NULL)
+	{
+		fprintf(costumer_file, write_format, person->name, person->adress, person->money, person->id);
+		fclose(costumer_file);
+		printf("Have a great day sir!\n \n \n");
+		return 1;
+	}
+	else
+	{
+		printf("Error: cannot open file %d.txt!\n", person->id);
+		return 0;
+	}
+	free(path);
+	free(person);
 }
+
+
+
+char* get_name_file(int user_id) //rend le nom d'un file 
+ {
+	 
+	char *path = (char*)malloc(100 * sizeof(char));
+	strcpy(path, "");
+	char file_name[ID_LEN] = "";
+
+	snprintf(file_name, ID_LEN, "%d", user_id); //fait la meme chose que itoa
+
+	strcat(file_name, ".txt"); //addition deux string
+	strcat(path, file_name);
+
+
+	return path;
+}
+

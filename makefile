@@ -20,12 +20,15 @@ bankAPI.o: $(SOURCE)/bankAPI.c $(INCLUDE)/bankAPI.h
 file_action.o: $(SOURCE)/file_action.c $(INCLUDE)/file_action.h
 	gcc -g -Wall -c $(SOURCE)/file_action.c -o $(BIN)/file_action.o
 
-.PHONY: clean run
+.PHONY: clean rune
 
 clean:
 	rm -vf bank $(BIN)/*
 
 run:
 	./bank
+
+debug: 
+	gdb ./bank 
 
 	
