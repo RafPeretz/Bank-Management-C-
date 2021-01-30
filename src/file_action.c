@@ -2,7 +2,6 @@
 #include "../include/ioUtils.h"
 #define ID_LEN 	20
 
-Customer* file2struct(int user_id);
 
 int struct2file(Customer *person)
 {
@@ -111,4 +110,6 @@ void print_file(int user_id)
 			printf("You entered wrong id \n");
     		free(clients);
 }
+
+
 
