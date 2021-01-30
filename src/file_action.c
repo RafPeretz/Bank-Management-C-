@@ -111,5 +111,17 @@ void print_file(int user_id)
     		free(clients);
 }
 
+void transact_money(int id_source,int id_destination,int money)
+{
+	Customer *customer_source =file2struct(id_source);
+	Customer *customer_destination =file2struct(id_source);
+
+	customer_source->money -= money;
+	customer_destination->money += money;
+
+	struct2file(customer_source);
+	struct2file(customer_destination);
+}
+
 
 
