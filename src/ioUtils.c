@@ -13,12 +13,23 @@ int read_int()
 }
 
 
-char *read_line(char *str, int n)
+char* read_line(char *str, int n)
 {
     char *ans = fgets(str, n, stdin);
     int newline_index = strlen(str)-1;
     str[newline_index] = 0;
     return ans;
+}
+
+char* read_line_file(char *str, int n, FILE *stream)
+{
+	char *ans = fgets(str, n, stream); 
+	if (ans == NULL)
+		return NULL;
+        
+	int newlineIndex = strcspn(str, "\n");
+	str[newlineIndex] = 0;
+	return str;
 }
 
 

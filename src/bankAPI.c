@@ -29,7 +29,10 @@ void new_acc()
 
 void view_list()
 {
-    printf("view list");
+    int user_id;
+	printf("Please enter the account's id: ");
+	user_id=read_int();
+	print_file(user_id);
 }
 
 void edit()

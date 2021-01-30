@@ -5,4 +5,6 @@
 
 int struct2file(Customer*);
 char* get_name_file(int);
+void print_file(int user_id);
+Customer* file2strcut(int user_id);
 
