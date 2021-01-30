@@ -40,8 +40,10 @@ void exec_option(int option)
         erase();
         break;
 
+    
+
     case 6:
-        see();
+        quit();
         break;
 
     

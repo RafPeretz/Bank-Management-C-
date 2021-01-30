@@ -47,12 +47,12 @@ char* get_name_file(int user_id) //rend le nom d'un file
 Customer* file2struct(int user_id)
 {
 	Customer *client =(Customer*)malloc(sizeof(Customer));
-	char *file_name =get_name_file(user_id);
+	char *file_name = get_name_file(user_id);
 	FILE* fptr; 
 
 	fptr = fopen(file_name, "r"); 
 
-	if(file_name==NULL)
+	if(file_name == NULL)
 	{
 		printf("Error \n");
 		exit(0);
@@ -113,14 +113,26 @@ void print_file(int user_id)
 
 void transact_money(int id_source,int id_destination,int money)
 {
-	Customer *customer_source =file2struct(id_source);
-	Customer *customer_destination =file2struct(id_source);
+	Customer *customer_source = file2struct(id_source);
+	Customer *customer_destination = file2struct(id_source);
 
 	customer_source->money -= money;
 	customer_destination->money += money;
 
 	struct2file(customer_source);
 	struct2file(customer_destination);
+}
+
+
+void remove_file(int user_id)
+{
+	char* name_file = get_name_file(user_id);
+
+	if (remove(name_file) == 0) 
+      printf("Deleted successfully"); 
+   else
+      printf("Unable to delete the file"); 
+
 }
 
 

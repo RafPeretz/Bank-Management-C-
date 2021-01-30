@@ -8,4 +8,4 @@ void view_list();
 void edit();
 void transcat();
 void erase();
-void see();
+ void quit();

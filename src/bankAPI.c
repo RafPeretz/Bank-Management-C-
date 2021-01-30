@@ -15,8 +15,7 @@ void menu()
     printf("3. Update information of existing account\n");
     printf("4. For transcactions \n");
     printf("5. Removing existing account \n");
-    printf("6. For transcactions\n");
-    printf("7. Exit \n");
+    printf("6. Exit \n");
 }
 
 
@@ -71,10 +70,14 @@ void edit()
 
  void erase()
  {
-    printf("erase");
- }
+    int user_id;
+	printf("Please enter the account's id you want to delete: ");
+	user_id = read_int();
+    remove_file(user_id);
+ 
+} 
 
-void  see()
+ void quit()
  {
-    printf("see");
+    exit(0);
  }
