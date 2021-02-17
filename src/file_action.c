@@ -15,15 +15,18 @@ int struct2file(Customer *person)
 		fprintf(costumer_file, write_format, person->name, person->adress, person->money, person->id);
 		fclose(costumer_file);
 		printf("Have a great day sir!\n \n \n");
+		free(path);
+		free(person);
 		return 1;
 	}
 	else
 	{
 		printf("Error: cannot open file %d.txt!\n", person->id);
+		free(path);
+		free(person);
 		return 0;
 	}
-	free(path);
-	free(person);
+	
 }
 
 
